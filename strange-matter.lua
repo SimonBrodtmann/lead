@@ -16,7 +16,7 @@ data:extend({
     enabled = false,
     energy_required = 1,
     ingredients = {{type="fluid", name="strange-matter", amount = 1}},
-    result = ore,
+    results = {{ type = "item", name = ore, amount = 1 }},
     category = "crafting-with-fluid",
     subgroup = "synthesis",
   },

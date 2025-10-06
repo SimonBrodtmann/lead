@@ -993,8 +993,6 @@ function add_product(recipe, product)
           return
         end
       end
-      recipe.result = nil
-      recipe.result_count = nil
       table.insert(recipe.results, product)
     end
   end
@@ -1119,7 +1117,6 @@ end
 
 function replace_some_product(recipe, old, old_amount, new, new_amount)
 	if recipe ~= nil then
-    if recipe.result == new then return end
     if recipe.results then
       for i, existing in pairs(recipe.results) do
         if existing.name == new then
@@ -1210,10 +1207,6 @@ function set_product_amount(recipe, product, amount)
           end
         end
       end
-    end
-    if not recipe.results and not recipe.result_count then
-      -- implicit one item result
-      recipe.result_count = amount
     end
   end
 end
@@ -1347,10 +1340,6 @@ function replace_product(recipe, old, new, options)
   if recipe then
     if recipe.main_product == old then
       recipe.main_product = new
-    end
-    if recipe.result == old then
-      recipe.result = new
-      return
     end
     if recipe.results then
       for i, result in pairs(recipe.results) do
@@ -1611,10 +1600,6 @@ end
 
 function add_to_product(recipe, product, amount)
   if recipe ~= nil and recipe.results ~= nil then
-    if recipe.result == product then
-      recipe.result_count = recipe.result_count + amount
-      return
-    end
     for i, result in pairs(recipe.results) do
 			if result.name == product then
         result.amount = result.amount + amount
@@ -1823,7 +1808,6 @@ function util.sum_products(recipe_name)
   -- this is going to end up approximate in some cases, integer division is probs fine
   if data.raw.recipe[recipe_name] then
     local recipe = data.raw.recipe[recipe_name]
-    if not recipe.results then return recipe.result_count end
     local sum = 0
     for i, result in pairs(recipe.results) do
       local amt = 0
