@@ -584,7 +584,6 @@ end
 -- se matter
 -- params: ore, energy_required, quant_out, quant_in, icon_size, stream_out
 function util.se_matter(params)
-  if mods["space-exploration"] > "0.6" then
     if not params.quant_in then params.quant_in = params.quant_out end
     if not params.icon_size then params.icon_size = 64 end
     local fname = "matter-fusion-"..params.ore
@@ -696,7 +695,6 @@ function util.se_matter(params)
       util.add_unlock("bz-advanced-stream-production", lname) 
     end
   end
-end
 
 -- deprecated
 -- Get the normal prototype for a recipe -- either .normal or the recipe itself
@@ -993,6 +991,8 @@ function add_product(recipe, product)
           return
         end
       end
+      recipe.result = nil
+      recipe.result_count = nil
       table.insert(recipe.results, product)
     end
   end
