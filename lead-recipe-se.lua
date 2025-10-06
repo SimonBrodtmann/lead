@@ -6,7 +6,6 @@ if mods["space-exploration"] then
   se_delivery_cannon_recipes[util.me.lead_plate] = {name= util.me.lead_plate}
   util.se_landfill({ore="lead-ore"})
 
-if util.se6() then
   util.se_matter({ore="lead-ore", energy_required=1, quant_out=10, stream_out=60})
   data:extend({
   {
@@ -108,69 +107,4 @@ if util.se6() then
     if util.me.byproduct() then util.add_product("molten-lead", {"copper-ore", 6}) end
   end
   se_delivery_cannon_recipes["lead-ingot"] = {name="lead-ingot"}
-else
-  data.raw.item["lead-plate"].subgroup = "plates"
-  if util.k2() then
-    data:extend({
-    {
-      type = "recipe",
-      name = "enriched-lead-smelting-vulcanite",
-      category = "smelting",
-      order = "d[lead-plate]",
-      energy_required = 24,
-      enabled = false,
-      always_show_made_in = true,
-      allow_as_intermediate = false,
-      ingredients = {
-        {type="item", name = "enriched-lead", amount = 8},
-        {type="item", name = "se-vulcanite-block", amount = 1},
-      },
-      results = {
-        {type="item", name = util.me.lead_plate, amount = 12},
-      },
-      icons =
-      {
-        { icon = "__bzlead__/graphics/icons/lead-plate.png", icon_size = 64 },
-        { icon = "__space-exploration-graphics__/graphics/icons/vulcanite-block.png", icon_size = 64, scale=0.25, shift= {-10, -10}},
-      },
-      
-    },
-    })
-    table.insert(data.raw.technology["se-processing-vulcanite"].effects, 
-        {type = "unlock-recipe", recipe= "enriched-lead-smelting-vulcanite"})
-    data.raw.recipe["enriched-lead-plate"].order= "d[lead-plate]"
-    se_delivery_cannon_recipes["enriched-lead"] = {name= "enriched-lead"}
-  else
-    data:extend({
-    {
-      type = "recipe",
-      name = "lead-smelting-vulcanite",
-      category = "smelting",
-      subgroup = "plates",
-      order = "d[lead-plate]",
-      energy_required = 24,
-      enabled = false,
-      always_show_made_in = true,
-      allow_as_intermediate = false,
-      ingredients = {
-        {type="item", name = "lead-ore", amount = 8},
-        {type="item", name = "se-vulcanite-block", amount = 1},
-      },
-      results = {
-        {type="item", name = util.me.lead_plate, amount = util.me.byproduct() and 10 or 12},
-      },
-      icons =
-      {
-        { icon = "__bzlead__/graphics/icons/lead-plate.png", icon_size = 64, icon_mipmaps = 3 },
-        { icon = "__space-exploration-graphics__/graphics/icons/vulcanite-block.png", icon_size = 64, icon_mipmaps = 3, scale=0.25, shift= {-10, -10}},
-      },
-
-      
-    },
-    })
-    if util.me.byproduct() then util.add_product("lead-smelting-vulcanite", {"copper-ore", 2}) end
-    table.insert(data.raw.technology["se-processing-vulcanite"].effects, 
-        {type = "unlock-recipe", recipe= "lead-smelting-vulcanite"})
-  end
-end
 end
