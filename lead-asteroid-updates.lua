@@ -22,7 +22,7 @@ if mods["space-age"] then
         {icon="__base__/graphics/icons/iron-ore.png", size=64, scale=0.25, shift={-8,0}},
         {icon="__bzlead__/graphics/icons/lead-ore.png", size=64, scale=0.25, shift={8,0}},
       },
-      category = "crushing",
+      category = "kr-crushing",
       subgroup="space-crushing",
       order = "b-a-z-b",
       auto_recycle = false,
