@@ -104,7 +104,7 @@ if mods["space-exploration"] then
     data.raw.recipe["enriched-lead-plate"].order= "d[lead-plate]"
     se_delivery_cannon_recipes["enriched-lead"] = {name= "enriched-lead"}
   else
-    if util.me.byproduct() then util.add_product("molten-lead", {"copper-ore", 6}) end
+    if util.me.byproduct() then util.add_product("molten-lead", { type = "item", name = "copper-ore", amount = 6 }) end
   end
   se_delivery_cannon_recipes["lead-ingot"] = {name="lead-ingot"}
 end

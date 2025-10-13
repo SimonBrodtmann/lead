@@ -282,7 +282,7 @@ util.add_ingredient("storehouse-basic", "lead-plate", 8)
 -- Leighzer's scrap
 if mods.leighzerscrapyards then
   util.add_to_product("scrap-processing", "iron-plate", -1)
-  util.add_product("scrap-processing", {"lead-plate", 1})
+  util.add_product("scrap-processing", { type = "item", name = "lead-plate", amount = 1 })
 end
 
 util.add_minable_result("simple-entity", "huge-volcanic-rock", {type="item", name="lead-ore", amount_min=10, amount_max=24})

@@ -374,7 +374,7 @@ data:extend({
         {
           enabled = true,
           energy_required = 16,
-          ingredients = {{"lead-ore", 10}},
+          ingredients = {{ type = "item", name = "lead-ore", amount = 10 }},
           results = {
             {type="item", name = "lead-ingot", amount_min=4, amount_max=5},
             {type="item", name = "copper-ore", amount_min=1, amount_max=2},
@@ -383,7 +383,7 @@ data:extend({
         {
           enabled = true,
           energy_required = 6.4,
-          ingredients = {{"lead-ore", 2}},
+          ingredients = {{ type = "item", name = "lead-ore", amount = 2 }},
           results = {
             {type="item", name = "lead-ingot", amount=2, probability=5/6},
             {type="item", name = "copper-ore", amount=1, probability=1/3},
@@ -393,7 +393,7 @@ data:extend({
     {
       enabled = true,
       energy_required = 12.8,
-      ingredients = {{"lead-ore", 4}},
+      ingredients = {{ type = "item", name = "lead-ore", amount = 4 }},
       results = {
         {type="item", name = "lead-ingot", amount=2, probability=5/6},
         {type="item", name = "copper-ore", amount=2, probability=1/3},
