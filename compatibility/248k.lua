@@ -3,7 +3,7 @@ local util = require("data-util");
 local pb2 = "fu_lead_item"
 
 
-if mods["248k"] then
+if mods["248k-Redux"] then
 -- Swap out all 248k titanium for BZ titanium_plate
 for i, recipe in pairs(data.raw.recipe) do
   util.replace_ingredient(recipe.name, pb2, "lead-plate")
